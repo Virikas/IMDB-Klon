@@ -7,6 +7,7 @@ package imdb.klon;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,6 +27,8 @@ public class Schauspieler implements Serializable {
 
     private String vorname;
     private String zuname;
+
+    @Column(name="\"alter\"")
     private int alter;
     private Date geburtsdatum;
     private String land;
@@ -80,7 +83,7 @@ public class Schauspieler implements Serializable {
     public void setZuname(String zuname) {
         this.zuname = zuname;
     }
-
+        
     public int getAlter() {
         return alter;
     }

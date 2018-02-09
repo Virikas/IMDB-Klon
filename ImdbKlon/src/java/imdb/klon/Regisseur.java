@@ -7,6 +7,7 @@ package imdb.klon;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,6 +26,7 @@ public class Regisseur implements Serializable {
     private Long id;
     private String vorname;
     private String nachname;
+    @Column(name="\"alter\"")
     private int alter;
     private Date geburtsdatum;
     private String land;
