@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FilmeEditDlg" widgetVar="FilmeEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFilmeTitle}">
+            <h:form id="FilmeEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{filmeController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFilmeLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{filmeController.selected.id}" title="#{bundle.EditFilmeTitle_id}" />
+                        <p:outputLabel value="#{bundle.EditFilmeLabel_titel}" for="titel" />
+                        <p:inputText id="titel" value="#{filmeController.selected.titel}" title="#{bundle.EditFilmeTitle_titel}" />
+                        <p:outputLabel value="#{bundle.EditFilmeLabel_publisher}" for="publisher" />
+                        <p:inputText id="publisher" value="#{filmeController.selected.publisher}" title="#{bundle.EditFilmeTitle_publisher}" />
+                        <p:outputLabel value="#{bundle.EditFilmeLabel_release}" for="release" />
+                        <p:calendar id="release" pattern="MM/dd/yyyy" value="#{filmeController.selected.release}" title="#{bundle.EditFilmeTitle_release}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditFilmeLabel_dauer}" for="dauer" />
+                        <p:inputText id="dauer" value="#{filmeController.selected.dauer}" title="#{bundle.EditFilmeTitle_dauer}" />
+                        <p:outputLabel value="#{bundle.EditFilmeLabel_genre}" for="genre" />
+                        <p:inputText id="genre" value="#{filmeController.selected.genre}" title="#{bundle.EditFilmeTitle_genre}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{filmeController.update}" value="#{bundle.Save}" update="display,:FilmeListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FilmeEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FilmeEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

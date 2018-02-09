@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FilmeViewDlg" widgetVar="FilmeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFilmeTitle}">
+            <h:form id="FilmeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{filmeController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFilmeLabel_id}"/>
+                        <h:outputText value="#{filmeController.selected.id}" title="#{bundle.ViewFilmeTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewFilmeLabel_titel}"/>
+                        <h:outputText value="#{filmeController.selected.titel}" title="#{bundle.ViewFilmeTitle_titel}"/>
+                        <h:outputText value="#{bundle.ViewFilmeLabel_publisher}"/>
+                        <h:outputText value="#{filmeController.selected.publisher}" title="#{bundle.ViewFilmeTitle_publisher}"/>
+                        <h:outputText value="#{bundle.ViewFilmeLabel_release}"/>
+                        <h:outputText value="#{filmeController.selected.release}" title="#{bundle.ViewFilmeTitle_release}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewFilmeLabel_dauer}"/>
+                        <h:outputText value="#{filmeController.selected.dauer}" title="#{bundle.ViewFilmeTitle_dauer}"/>
+                        <h:outputText value="#{bundle.ViewFilmeLabel_genre}"/>
+                        <h:outputText value="#{filmeController.selected.genre}" title="#{bundle.ViewFilmeTitle_genre}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FilmeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
